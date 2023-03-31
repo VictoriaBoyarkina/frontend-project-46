@@ -1,4 +1,4 @@
-mport { readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import _ from 'lodash';
 import process from 'process';
 import path from 'path';
@@ -38,8 +38,6 @@ const genDiff = (filepath1, filepath2) => {
   console.log(typeof(listOfKeys));
   const result = listOfKeys.map((key) => checkValue(key, file1, file2));
   return result;
-};
+}
 
-
-
-export default genDiff;
+genDiff(file1.json, file2.json);
