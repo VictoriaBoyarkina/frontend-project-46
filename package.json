@@ -21,7 +21,8 @@
   "type": "module",
   "homepage": "https://github.com/VictoriaBoyarkina/frontend-project-46#readme",
   "dependencies": {
-    "commander": "^10.0.0"
+    "commander": "^10.0.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "eslint": "^8.37.0",
