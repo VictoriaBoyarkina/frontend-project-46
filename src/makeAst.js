@@ -1,15 +1,4 @@
-import { readFileSync } from 'node:fs';
 import _ from 'lodash';
-import process from 'process';
-import path from 'path';
-
-const getJson = (filepath) => {
-  const directory = process.cwd();
-  const fullFilePath = path.resolve(directory, filepath);
-  const json = readFileSync(fullFilePath );
-  const file = JSON.parse(json);
-  return file;
-};
 
 const getListOfKeys = (file1, file2) => {
   const list1 = Object.keys(file1);
@@ -31,7 +20,7 @@ const checkValue = (key, file1, file2) => {
   return (`- ${key}: ${file1.key}\n+ ${key}: ${file2.key}`);
 };
 
-export const genDiff = (filepath1, filepath2) => {
+export const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const file1 = getJson(filepath1);
   const file2 = getJson(filepath2);
   const listOfKeys = getListOfKeys(file1, file2);
