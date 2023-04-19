@@ -1,0 +1,31 @@
+---
+settings: {
+  jest: { version: 27 }
+}
+
+plugins: 
+  # https://github.com/jest-community/eslint-plugin-jest
+  - jest
+
+# https://eslint.org/docs/user-guide/configuring#specifying-environments
+env:
+  node: true
+
+extends:
+  - 'airbnb-base'
+  - 'plugin:jest/recommended'
+
+parserOptions:
+  ecmaVersion: latest
+
+rules: {
+  no-underscore-dangle: [2, { "allow": ["__filename", "__dirname"] }],
+  'import/extensions': [
+    'error',
+    'ignorePackages',
+    {
+      'js': 'always'
+    }
+  ]
+}
+
