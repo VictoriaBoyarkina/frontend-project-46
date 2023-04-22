@@ -44,10 +44,11 @@ const gendiff = (filepath1, filepath2, format = 'stylish') => {
 	for (let i = 0; i < listOfKeys.length; i += 1) {
 		result.push(checkValue(listOfKeys[i], object1, object2))
 	}
-	console.log(`{\n${result.join('\n')}\n}`);
+	return`{\n${result.join('\n')}\n}`;
 
 };
 
-gendiff('./fixtures/file1.json', './fixtures/file2.json');
+console.log(gendiff('./fixtures/file1.json', './fixtures/file2.json'));
+console.log('{\n  - follow: false\n    host: hexlet.io\n  - proxy: 123.234.53.22\n  - timeout: 50\n  + timeout: 20\n  + verbose: true\n}');
 
 export default gendiff;
