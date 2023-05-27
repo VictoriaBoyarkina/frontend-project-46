@@ -23,7 +23,6 @@ jobs:
       - name: run tests
         run: npm run test
 # Name of workflow
-name: Node CI
 
 # Trigger the workflow on push or pull request
 
