@@ -13,7 +13,10 @@ run-dist:
 	make -C run-dist
 
 run:
-	make -C app run
+	bin/gendiff.js
+
+gendiff:
+      node bin/gendiff.js
 
 test:
 	make -C app test

@@ -7,7 +7,7 @@
   },
   "main": "gendiff.js",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

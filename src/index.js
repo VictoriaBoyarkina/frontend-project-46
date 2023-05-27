@@ -44,7 +44,7 @@ const gendiff = (filepath1, filepath2, format = 'stylish') => {
 	for (let i = 0; i < listOfKeys.length; i += 1) {
 		result.push(checkValue(listOfKeys[i], object1, object2))
 	}
-	console.log(`{\n${result.join('\n')}\n}`);
+	return`{\n${result.join('\n')}\n}`;
 
 };
 
