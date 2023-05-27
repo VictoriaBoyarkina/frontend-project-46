@@ -1,36 +1,26 @@
-.DEFAULT_GOAL := build-run
-
-clean:
-	make -C app clean
-
-build:
-	make -C app build
-
-install:
-	make -C app install
-
-run-dist:
-	make -C run-dist
+install: install-deps
+	npx simple-git-hooks
 
 run:
-	bin/gendiff.js
+	bin/nodejs-package.js 10
 
 gendiff:
-      node bin/gendiff.js
+      bin/gendiff.js
+
+install-deps:
+	npm ci
 
 test:
-	make -C app test
+	npm test --test-reporter=spec
 
-report:
-	make -C app report
+test-coverage:
+	# TODO: set global flag --experimental-test-coverage
+	npm test
 
 lint:
-	make lint
+	npx eslint .
 
-update-deps:
-	make -C app update-deps
+publish:
+	npm publish
 
-
-build-run: build run
-
-.PHONY: build
+.PHONY: test
