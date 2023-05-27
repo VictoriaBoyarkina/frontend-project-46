@@ -5,7 +5,7 @@ run:
 	bin/nodejs-package.js 10
 
 gendiff:
-      bin/gendiff.js
+	bin/gendiff.js
 
 install-deps:
 	npm ci
@@ -22,3 +22,5 @@ lint:
 
 publish:
 	npm publish
+
+.PHONY: test
