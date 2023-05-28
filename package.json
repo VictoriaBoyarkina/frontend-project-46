@@ -23,6 +23,7 @@
   "dependencies": {
     "commander": "^10.0.0",
     "gradle": "^1.2.4",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
