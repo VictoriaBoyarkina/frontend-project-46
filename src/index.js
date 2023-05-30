@@ -40,6 +40,7 @@ const gendiff = (filepath1, filepath2, format = 'stylish') => {
   const object1 = getObject(file1, extension1);
   const object2 = getObject(file2, extension2);
   const listOfKeys = getListOfKeys(object1, object2);
+  console.log(listOfKeys);
   const result = [];
   for (let i = 0; i < listOfKeys.length; i += 1) {
     result.push(checkValue(listOfKeys[i], object1, object2));
