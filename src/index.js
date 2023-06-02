@@ -39,13 +39,28 @@ const gendiff = (filepath1, filepath2, format = 'stylish') => {
   const file2 = readFile(fullPath2);
   const object1 = getObject(file1, extension1);
   const object2 = getObject(file2, extension2);
-  const listOfKeys = getListOfKeys(object1, object2);
-  console.log(listOfKeys);
-  const result = [];
-  for (let i = 0; i < listOfKeys.length; i += 1) {
-    result.push(checkValue(listOfKeys[i], object1, object2));
+  return [object1, object2];
+};
+
+const callback = (key, object1, object2) => {
+  if (object1.hasOwnProperty(key) && !object2.hasOwnProperty(key)) {
+    { key: key, value: object1.key, status: 'deleted' }
+  } else if (!object1.hasOwnProperty(key) && object2.hasOwnProperty(key)) {
+    { key: key, value: object2.key, status: 'added' }
+  } else if (object1.hasOwnProperty(key) && object2.hasOwnProperty(key) && object1.hasOwnProperty(key) === object2.hasOwnProperty(key)) {
+    { key: key, value: object2.key, status: 'notChanged' }
+  } else if (object1.hasOwnProperty(key) && object2.hasOwnProperty(key) && object1.hasOwnProperty(key) !== object2.hasOwnProperty(key)) {
+    { key: key, value: [object1.key, object2.key], status: 'changed' }
+  } else if (object1.key instanceof Object) {
+    { key: key, value: object1.key, status: 'object' }
   }
-  return `{\n${result.join('\n')}\n}`;
+}
+
+const diff = ([object1, object2]) => {
+  const listOfKeys = getListOfKeys(object1, object2);
+  listOfKeys.map((key), (key) => {
+    callback(key);
+  })
 };
 
 export default gendiff;
