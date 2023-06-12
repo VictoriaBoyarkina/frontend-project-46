@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { program } from 'commander';
-import gendiff from '../src/index.js';
+import gendiff from '../src/makeAstTree.js';
 
 program
   .version('0.0.1')
