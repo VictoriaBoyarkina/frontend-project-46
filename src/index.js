@@ -1,17 +1,25 @@
 /* eslint-disable object-shorthand */
+import { fileURLToPath } from 'url';
 import fs from 'fs';
-import process from 'process';
 import path from 'path';
 import parse from './parser.js';
+import { makeAstTree, getListOfKeys } from './makeAstTree.js';
+import render from './render.js';
 
-const getPath = (filepath) => path.resolve(process.cwd(), filepath);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const getPath = (filename) => path.resolve(__dirname, '../__fixtures__/', filename);
 
 const getExtension = (filepath) => path.extname(filepath).substring(1);
 
 const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
+const filepath1 = 'file3.json';
+const filepath2 = 'file4.json';
+
 // eslint-disable-next-line no-unused-vars
-const getObjects = (filepath1, filepath2, formatter = 'stylish') => {
+const gendiff = (path1, path2, formatter = 'stylish') => {
   const fullPath1 = getPath(filepath1);
   const fullPath2 = getPath(filepath2);
   const ext1 = getExtension(filepath1);
@@ -23,4 +31,14 @@ const getObjects = (filepath1, filepath2, formatter = 'stylish') => {
   return [obj1, obj2];
 };
 
-export default getObjects;
+const [obj1, obj2] = gendiff(filepath1, filepath2);
+
+const listOfKeys = getListOfKeys(obj1, obj2);
+
+const astTree = makeAstTree(obj1, obj2, listOfKeys);
+
+const result = [];
+
+astTree.map((element) => result.push(render(element)));
+
+console.log(`{\n${result.join('\n')}\n}`);
