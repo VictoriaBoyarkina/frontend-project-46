@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
 import parse from './parser.js';
-import { makeAstTree, getListOfKeys } from './makeAstTree.js';
+import { makeAstTree, getListOfKeys } from './plain.js';
 import makeStylish from './json.js';
 
 const __filename = fileURLToPath(import.meta.url);
