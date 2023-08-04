@@ -4,7 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import parse from './parser.js';
 import { makeAstTree, getListOfKeys } from './makeAstTree.js';
-import render from './render.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -37,8 +36,5 @@ const listOfKeys = getListOfKeys(obj1, obj2);
 
 const astTree = makeAstTree(obj1, obj2, listOfKeys);
 
-const result = [];
-
-astTree.map((element) => result.push(render(element)));
-
-console.log(`{\n${result.join('\n')}\n}`);
+// eslint-disable-next-line no-console
+console.log(astTree);

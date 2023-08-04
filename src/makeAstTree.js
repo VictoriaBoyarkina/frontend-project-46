@@ -9,19 +9,30 @@ const getListOfKeys = (file1, file2) => {
 };
 
 const makeAstTree = (object1, object2, listOfKeys) => {
-  const result = listOfKeys.map((key) => {
-    if (_.isObject(object1[key]) && _.isObject(object2[key])) {
-      return { key, status: 'nested', children: makeAstTree(object1[key], object2[key], getListOfKeys(object1[key], object2[key])) };
-      // eslint-disable-next-line max-len
-    } if (Object.prototype.hasOwnProperty.call(object1, key) && Object.prototype.hasOwnProperty.call(object1, key) && object1[key] === object2[key]) {
-      return { key, value: object1[key], status: 'notChanged' };
-    } if (!Object.prototype.hasOwnProperty.call(object2, key)) {
-      return { key, value: object1[key], status: 'deleted' };
-    } if (!Object.prototype.hasOwnProperty.call(object1, key)) {
-      return { key, value: object2[key], status: 'added' };
+  const result = [];
+  result.push('{');
+  // eslint-disable-next-line array-callback-return
+  listOfKeys.map((key) => {
+    if (_.has(object1, key) && _.has(object2, key)) {
+      if (object1[key] === object2[key]) {
+        result.push(`    ${key}: ${object1[key]}`);
+      }
     }
-    return { key, value: [object1[key], object2[key]], status: 'changed' };
+    if (_.has(object1, key) && _.has(object2, key)) {
+      if (object1[key] !== object2[key]) {
+        result.push(`  - ${key}: ${object1[key]}`);
+        result.push(`  + ${key}: ${object2[key]}`);
+      }
+    }
+    if (_.has(object1, key) && !_.has(object2, key)) {
+      result.push(`  - ${key}: ${object1[key]}`);
+    }
+    if (!_.has(object1, key) && _.has(object2, key)) {
+      result.push(`  + ${key}: ${object2[key]}`);
+    }
   });
+  result.push('}');
+  result.join('\n');
   return result;
 };
 
