@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import parse from './parser.js';
 import { makeAstTree, getListOfKeys } from './makeAstTree.js';
+import makeStylish from './json.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,8 +15,8 @@ const getExtension = (filepath) => path.extname(filepath).substring(1);
 
 const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
-const filepath1 = 'file3.json';
-const filepath2 = 'file4.json';
+const filepath1 = 'file1.json';
+const filepath2 = 'file2.json';
 
 // eslint-disable-next-line no-unused-vars
 const gendiff = (path1, path2, formatter = 'stylish') => {
@@ -36,5 +37,7 @@ const listOfKeys = getListOfKeys(obj1, obj2);
 
 const astTree = makeAstTree(obj1, obj2, listOfKeys);
 
+const stylish = makeStylish(obj1, obj2, listOfKeys);
+
 // eslint-disable-next-line no-console
-console.log(astTree);
+console.log(stylish);
