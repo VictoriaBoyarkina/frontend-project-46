@@ -3,8 +3,8 @@ import { fileURLToPath } from 'url';
 import fs from 'fs';
 import path from 'path';
 import parse from './parser.js';
-import { makeAstTree, getListOfKeys } from './makeAstTree.js';
-import makeStylish from './json.js';
+import makeAstTree from './makeAstTree.js';
+import diff from './formatters/stylish.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,16 +28,10 @@ const gendiff = (path1, path2, formatter = 'stylish') => {
   const data2 = readFile(fullPath2);
   const obj1 = parse(data1, ext1);
   const obj2 = parse(data2, ext2);
-  return [obj1, obj2];
+  const astTree = makeAstTree(obj1, obj2);
+  console.log(astTree);
+  console.log(diff(astTree));
+  return diff(astTree);
 };
 
-const [obj1, obj2] = gendiff(filepath1, filepath2);
-
-const listOfKeys = getListOfKeys(obj1, obj2);
-
-const astTree = makeAstTree(obj1, obj2, listOfKeys);
-
-const stylish = makeStylish(obj1, obj2, listOfKeys);
-
-// eslint-disable-next-line no-console
-console.log(stylish);
+gendiff(filepath1, filepath2);
