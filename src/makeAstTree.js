@@ -25,7 +25,7 @@ const makeAstTree = (object1, object2) => {
     if (_.has(object1, key) && _.has(object2, key)) {
       if (object1[key] !== object2[key]) {
         return {
-          key, type: 'changed', value1: object1[key], valu2: object2[key],
+          key, type: 'changed', value1: object1[key], value2: object2[key],
         };
       }
     }

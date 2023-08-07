@@ -37,9 +37,9 @@ const getStylishFormat = (value, depth = 1) => {
     case 'changed':
       return `${makeIndent(depth)}${symbols.deleted} ${
         value.key
-      }: ${stringify(value.object1, depth)}\n${makeIndent(depth)}${
+      }: ${stringify(value.value1, depth)}\n${makeIndent(depth)}${
         symbols.added
-      } ${value.key}: ${stringify(value.object2, depth)}`;
+      } ${value.key}: ${stringify(value.value2, depth)}`;
     case 'nested':
       return `${makeIndent(depth)}  ${value.key}: {\n${value.children
         .map((val) => getStylishFormat(val, depth + 1))
