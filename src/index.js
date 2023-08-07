@@ -29,8 +29,6 @@ const gendiff = (path1, path2, formatter = 'stylish') => {
   const obj1 = parse(data1, ext1);
   const obj2 = parse(data2, ext2);
   const astTree = makeAstTree(obj1, obj2);
-  console.log(astTree);
-  console.log(diff(astTree));
   return diff(astTree);
 };
 

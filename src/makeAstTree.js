@@ -32,9 +32,7 @@ const makeAstTree = (object1, object2) => {
     if (_.has(object1, key) && !_.has(object2, key)) {
       return { key, type: 'deleted', value: object1[key] };
     }
-    if (!_.has(object1, key) && _.has(object2, key)) {
-      return { key, type: 'added', value: object2[key] };
-    }
+    return { key, type: 'added', value: object2[key] };
   });
   return result;
 };
