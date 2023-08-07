@@ -33,3 +33,5 @@ const gendiff = (path1, path2, formatter = 'stylish') => {
 };
 
 gendiff(filepath1, filepath2);
+
+export default gendiff;
