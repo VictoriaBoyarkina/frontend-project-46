@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const symbols = {
   added: '+',
-  deleted: '-',
+  removed: '-',
   unchanged: ' ',
   nested: ' ',
 };
@@ -27,15 +27,16 @@ const stringify = (value, depth = 1) => {
 };
 
 const getStylishFormat = (value, depth = 1) => {
-  switch (value.type) {
+  const { type } = value;
+  switch (type) {
     case 'added':
-    case 'deleted':
+    case 'removed':
     case 'unchanged':
-      return `${makeIndent(depth)}${symbols[value.type]} ${
+      return `${makeIndent(depth)}${symbols[type]} ${
         value.key
       }: ${stringify(value.value, depth)}`;
-    case 'changed':
-      return `${makeIndent(depth)}${symbols.deleted} ${
+    case 'updated':
+      return `${makeIndent(depth)}${symbols.removed} ${
         value.key
       }: ${stringify(value.value1, depth)}\n${makeIndent(depth)}${
         symbols.added
@@ -45,7 +46,7 @@ const getStylishFormat = (value, depth = 1) => {
         .map((val) => getStylishFormat(val, depth + 1))
         .join('\n')}\n ${makeIndent(depth)} }`;
     default:
-      throw new Error(`Unknown type: ${value.type}`);
+      throw new Error(`Unknown type: ${type}`);
   }
 };
 
