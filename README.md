@@ -17,7 +17,7 @@
 [![asciicast](https://asciinema.org/a/S22qCE5hsIf40CduaGonyBSOc.svg)](https://asciinema.org/a/S22qCE5hsIf40CduaGonyBSOc)
 
 ### plain
-	gendiff file1.json file2.json -f plain/n
+	gendiff file1.json file2.json -f plain
 	gendiff file1.yaml file2.yaml -f plain
 
 [![asciicast](https://asciinema.org/a/Ra0lm4qrOaMBLoulqJIqEIug8.svg)](https://asciinema.org/a/Ra0lm4qrOaMBLoulqJIqEIug8)
