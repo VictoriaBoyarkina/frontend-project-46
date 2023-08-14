@@ -28,4 +28,4 @@ const gendiff = (path1, path2, format) => {
   return formatDiff(astTree, format);
 };
 
-export { gendiff, readFile, getPath };
+export default gendiff;

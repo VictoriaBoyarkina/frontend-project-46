@@ -1,4 +1,13 @@
-import { gendiff, readFile, getPath } from '../src/index.js';
+import { fileURLToPath } from 'url';
+import fs from 'fs';
+import path from 'path';
+import gendiff from '../src/index.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const getPath = (filename) => path.resolve(__dirname, '../__fixtures__/', filename);
+const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
 const expectedStylish = readFile(getPath('result_Stylish.txt', 'utf8'));
 const expectedPlain = readFile(getPath('result_Plain.txt', 'utf8'));
