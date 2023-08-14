@@ -5,9 +5,10 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c1b5c772154670f0a1e9/test_coverage)](https://codeclimate.com/github/VictoriaBoyarkina/frontend-project-46/test_coverage)
 
-### gendiff for nested structures 
+### gendiff for nested structures
+### formats: json, yaml
 
-##### formats: json, yaml; formatter type: stylish
+#### stylish
 
 	gendiff file1.json file2.json gendiff file1.json file2.json -f stylish
 	gendiff file1.yaml file2.yaml
@@ -15,14 +16,14 @@
 
 [![asciicast](https://asciinema.org/a/S22qCE5hsIf40CduaGonyBSOc.svg)](https://asciinema.org/a/S22qCE5hsIf40CduaGonyBSOc)
 
-##### formats: json, yaml; formatter type: plain
+#### plain
 
 	gendiff file1.json file2.json -f plain/n
 	gendiff file1.yaml file2.yaml -f plain
 
 [![asciicast](https://asciinema.org/a/Ra0lm4qrOaMBLoulqJIqEIug8.svg)](https://asciinema.org/a/Ra0lm4qrOaMBLoulqJIqEIug8)
 
-##### formats: json, yaml; formatter type: json
+#### json
 
 	gendiff file1.json file2.json -f json
 	gendiff file1.yaml file2.yaml -f json
