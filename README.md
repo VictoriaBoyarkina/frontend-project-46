@@ -6,7 +6,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c1b5c772154670f0a1e9/test_coverage)](https://codeclimate.com/github/VictoriaBoyarkina/frontend-project-46/test_coverage)
 
 # Gendiff for nested structures
-### formats: json, yaml
+## formats: json, yaml
 
 
 ### stylish
