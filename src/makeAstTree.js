@@ -1,10 +1,7 @@
 /* eslint-disable max-len */
 import _ from 'lodash';
 
-const sortArray = (array) => {
-  const sortedArray = [...array];
-  return sortedArray.sort();
-};
+const sortArray = (array) => array.slice().sort();
 
 const getListOfKeys = (file1, file2) => {
   const list1 = Object.keys(file1);
