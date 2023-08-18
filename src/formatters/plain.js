@@ -34,4 +34,4 @@ const getPlainFormat = (node, parentPath = '') => {
   }
 };
 
-export default (diff) => `${diff.map((node) => getPlainFormat(node)).join('\n')}`;
+export default (diff) => `${diff.map((node) => getPlainFormat(node)).join('\n').trim()}`;
