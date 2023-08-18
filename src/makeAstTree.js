@@ -2,7 +2,8 @@
 import _ from 'lodash';
 
 const bubbleSort = (coll) => {
-  let stepsCount = coll.length - 1;
+  const array = coll;
+  let stepsCount = array.length - 1;
   // Объявляем переменную swapped, значение которой показывает,
   // был ли совершен обмен элементов во время перебора массива
   let swapped;
@@ -14,11 +15,11 @@ const bubbleSort = (coll) => {
     // Перебираем массив и меняем местами элементы, если предыдущий
     // больше, чем следующий
     for (let i = 0; i < stepsCount; i += 1) {
-      if (coll[i] > coll[i + 1]) {
+      if (array[i] > array[i + 1]) {
         // temp – временная константа для хранения текущего элемента
         const temp = coll[i];
-        coll[i] = coll[i + 1];
-        coll[i + 1] = temp;
+        array[i] = coll[i + 1];
+        array[i + 1] = temp;
         // Если сработал if и была совершена перестановка,
         // присваиваем swapped значение true
         swapped = true;
