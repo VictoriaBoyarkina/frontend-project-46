@@ -1,14 +1,12 @@
 /* eslint-disable max-len */
 import _ from 'lodash';
 
-const sortArray = (array) => array.slice().sort();
-
 const getListOfKeys = (file1, file2) => {
   const list1 = Object.keys(file1);
   const list2 = Object.keys(file2);
   const listOfKeys = [...list1, ...list2];
   const uniqArray = _.uniq(listOfKeys);
-  return sortArray(uniqArray);
+  return _.sortBy(uniqArray);
 };
 
 const makeAstTree = (object1, object2) => {
