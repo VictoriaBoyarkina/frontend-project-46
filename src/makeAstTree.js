@@ -2,7 +2,7 @@
 import _ from 'lodash';
 
 const sortArray = (array) => {
-  const sortedArray = array;
+  const sortedArray = [...array];
   return sortedArray.sort();
 };
 
