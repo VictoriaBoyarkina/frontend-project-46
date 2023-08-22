@@ -19,16 +19,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Use Node ${{ matrix.node }}
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node }}
+        node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: npm install
-      run: |
-        make install
-      env:
-        CI: true
+    - run: make install
     - name: Test & publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
