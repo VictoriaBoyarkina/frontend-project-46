@@ -19,23 +19,19 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Use Node ${{ matrix.node }}
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node }}
+        node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - name: npm install
-      run: |
-        make install
-      env:
-        CI: true
+    - run: make install
     - name: Test & publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
       uses: paambaati/codeclimate-action@v3.2.0
         # Add Code Climate secret key
       env:
-          CC_TEST_REPORTER_ID: 063dfc12c8ecf11ccda0f9f18bdb3d188042024d0ad28fade397f34732c9854a
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
           coverageCommand: make test-coverage
           debug: true
