@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/VictoriaBoyarkina/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/VictoriaBoyarkina/frontend-project-46/actions)",
+  "description": "Compares two configuration files and shows a difference.",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
@@ -25,6 +25,7 @@
     "commander": "^10.0.0",
     "gradle": "^1.2.4",
     "js-yaml": "^4.1.0",
+    "jshint": "^2.13.6",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
